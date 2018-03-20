@@ -56,6 +56,7 @@ func handler1(w http.ResponseWriter, r *http.Request) {
 // ハンドラを登録してウェブページを表示させる
 // ===============================================================
 func main() {
+	common.InfoLog("start server.")
 	http.HandleFunc("/", handler1)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe(":3000", nil)
 }

@@ -1,0 +1,17 @@
+# docker-compose.yml
+
+version: '2'
+
+services:
+  app:
+    image: 'golang:1.6-onbuild'
+    command: go run src/server.go
+    ports:
+      - "3000:3000"
+    links:
+      - redis
+    volumes:
+      - ".:/go/src/app"
+  
+  redis:
+    image: redis
