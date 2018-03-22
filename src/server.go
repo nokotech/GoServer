@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"./common"
+	"./redis"
 )
 
 // ===============================================================
@@ -26,6 +27,10 @@ func errorHandler(w http.ResponseWriter) {
 func handler1(w http.ResponseWriter, r *http.Request) {
 	common.InfoLog("start....")
 	common.InfoResLog(w, "")
+
+	redis.GetInstance().Set("a", "12345")
+	text := redis.GetInstance().Get("a")
+	common.InfoLog(text)
 
 	// テンプレート用のデータ
 	page := Page{"Hello World.", 1}
